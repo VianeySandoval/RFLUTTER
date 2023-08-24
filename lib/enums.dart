@@ -1,0 +1,1 @@
+enum Operaciones{suma,resta,multiplicacion,division}
