@@ -1,4 +1,7 @@
+import 'dart:html';
+
 import 'package:flutter/material.dart';
+import 'package:prueba1/botom_custom.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,13 +15,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Tarea 2',
+      title: 'Flutter Tarea 3',
       theme: ThemeData(
-        appBarTheme: AppBarTheme(color: Color.fromARGB(255, 129, 97, 124)),
-       
+        appBarTheme: const AppBarTheme(color: Color.fromARGB(255, 145, 8, 8)),
         useMaterial3: false,
       ),
-      home: const MyHomePage(title: 'Flutter Tarea 2 calculadora'),
+      home: const MyHomePage(title: 'Flutter Tarea 3 calculadora'),
       debugShowCheckedModeBanner: true,
     );
   }
@@ -160,175 +162,103 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
         centerTitle: true,
       ),
-      body: Center(
+      body: Container(
+        width: double.infinity,
+        height: double.infinity,
+        decoration: const BoxDecoration(color: Color.fromARGB(111, 0, 0, 0)),
+        //color: Colors.black,
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              '$resultado',
-              style: Theme.of(context).textTheme.headlineMedium,
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(12.0),
+              child: PanelCustom(),
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                MaterialButton(
-                  onPressed: () => _setCounter(d: 9),
-                  color: Theme.of(context).appBarTheme.backgroundColor,
-                  child: Text(
-                    '9',
-                    style: textStyle,
-                  ),
-                ),
-                MaterialButton(
-                  onPressed: () => _setCounter(d: 8),
-                   color: Theme.of(context).appBarTheme.backgroundColor,
-                  child:  Text(
-                    '8',
-                    style: textStyle,
-                  ),
-                ),
-                MaterialButton(
-                  onPressed: () => _setCounter(d: 7),
-                  color: Theme.of(context).appBarTheme.backgroundColor,
-                  child:  Text(
-                    '7',
-                    style: textStyle,
-                  ),
-                ),
-                MaterialButton(
-                  onPressed: () => _setOperaciones(operacion: "/"),
-                  color: Theme.of(context).appBarTheme.backgroundColor,
-                  child: Text(
-                    '/',
-                    style: textStyle,
-                  ),
-                ),
-              ],
+            SizedBox(
+              width: double.infinity,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  ButtomCustom(labelButtom: '(', onTap: () {  },),
+                  ButtomCustom(labelButtom: ')', onTap: () {  },),
+                  ButtomCustom(labelButtom: '%', onTap: () {  },),
+                  ButtomCustom(labelButtom: ' AC', onTap: () {  },),
+                ],
+              ),
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                MaterialButton(
-                  onPressed: () => _setCounter(d: 6),
-                   color: Theme.of(context).appBarTheme.backgroundColor,
-                  child: Text(
-                    '6',
-                    style: textStyle,
-                  ),
-                ),
-                MaterialButton(
-                  onPressed: () => _setCounter(d: 5),
-                  color: Theme.of(context).appBarTheme.backgroundColor,
-                  child: Text(
-                    '5',
-                    style: textStyle,
-                  ),
-                ),
-                MaterialButton(
-                  onPressed: () => _setCounter(d: 4),
-                  color: Theme.of(context).appBarTheme.backgroundColor,
-                  child:  Text(
-                    '4',
-                    style: textStyle,
-                  ),
-                ),
-                MaterialButton(
-                  onPressed: () => _setOperaciones(operacion: "*"),
-                  color: Theme.of(context).appBarTheme.backgroundColor,
-                  child: Text(
-                    '*',
-                    style: textStyle,
-                  ),
-                ),
-              ],
+            SizedBox(
+              width: double.infinity,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  ButtomCustom(labelButtom: '7', onTap: () {  },),
+                  ButtomCustom(labelButtom: '8', onTap: () {  },),
+                  ButtomCustom(labelButtom: '9', onTap: () {  },),
+                  ButtomCustom(labelButtom: '/', onTap: () {  },),
+                ],
+              ),
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                MaterialButton(
-                  onPressed: () => _setCounter(d: 3),
-                  color: Theme.of(context).appBarTheme.backgroundColor,
-                  child:  Text(
-                    '3',
-                    style: textStyle,
-                  ),
-                ),
-                MaterialButton(
-                  onPressed: () => _setCounter(d: 2),
-                  color: Theme.of(context).appBarTheme.backgroundColor,
-                  child:  Text(
-                    '2',
-                    style: textStyle,
-                  ),
-                ),
-                MaterialButton(
-                  onPressed: () => _setCounter(d: 1),
-                  color: Theme.of(context).appBarTheme.backgroundColor,
-                  child:  Text(
-                    '1',
-                    style: textStyle,
-                  ),
-                ),
-                MaterialButton(
-                  onPressed: () => _setOperaciones(operacion: "-"),
-                  color: Theme.of(context).appBarTheme.backgroundColor,
-                  child:  Text(
-                    '-',
-                    style: textStyle,
-                  ),
-                ),
-              ],
+            SizedBox(
+              width: double.infinity,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  ButtomCustom(labelButtom: '4', onTap: () {  },),
+                  ButtomCustom(labelButtom: '5', onTap: () {  },),
+                  ButtomCustom(labelButtom: '6', onTap: () {  },),
+                  ButtomCustom(labelButtom: '*', onTap: () {  },),
+                ],
+              ),
             ),
-            const Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                MaterialButton(
-                  onPressed: null,
-                  child: Text('0'),
-                ),
-              ],
+             SizedBox(
+              width: double.infinity,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  ButtomCustom(labelButtom: '1', onTap: () {  },),
+                  ButtomCustom(labelButtom: '2', onTap: () {  },),
+                  ButtomCustom(labelButtom: '3', onTap: () {  },),
+                  ButtomCustom(labelButtom: '-', onTap: () {  },),
+                ],
+              ),
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                MaterialButton(
-                  onPressed: _getResult,
-                  color: Theme.of(context).appBarTheme.backgroundColor,
-                  child: const Text(
-                    '=',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 20,
-                    ),
-                  ),
-                ),
-                MaterialButton(
-                  onPressed: _resetCounter,
-                  color: const Color.fromARGB(150, 248, 23, 23),
-                  child: const Text(
-                    'reset',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 20,
-                    ),
-                  ),
-                ),
-                MaterialButton(
-                  onPressed: () => _setOperaciones(operacion: "+"),
-                  color: Theme.of(context).appBarTheme.backgroundColor,
-                  child: const Text(
-                    '+',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 20,
-                    ),
-                  ),
-                ),
-              ],
+             SizedBox(
+              width: double.infinity,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  ButtomCustom(labelButtom: '0', onTap: () {  },),
+                  ButtomCustom(labelButtom: '.', onTap: () {  },),
+                  ButtomCustom(labelButtom: '=', onTap: () {  },),
+                  ButtomCustom(labelButtom: '+', onTap: () {  },),
+                ],
+              ),
             ),
           ],
         ),
       ),
+    );
+  }
+}
+
+
+
+class PanelCustom extends StatelessWidget {
+  const PanelCustom({
+    super.key,
+    this.colorCustom = Colors.black,
+  });
+
+  final Color colorCustom;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: MediaQuery.of(context).size.width * 0.50, // responsive
+      height: MediaQuery.of(context).size.height * 0.15, // responsive
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(15.0), color: colorCustom),
     );
   }
 }
