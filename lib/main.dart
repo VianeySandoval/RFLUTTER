@@ -2,7 +2,8 @@ import 'dart:html';
 
 import 'package:flutter/material.dart';
 import 'package:prueba1/botom_custom.dart';
-
+import 'package:prueba1/enums.dart';
+//TODO: SE VA ASIGNAR OPERADORES PARA Q SE MUESTRE, SE VA A SETEAR LOS RESULTADOS EN 0, Y SE HARAN LAS OPERACIONES
 void main() {
   runApp(const MyApp());
 }
@@ -37,94 +38,79 @@ class _MyHomePageState extends State<MyHomePage> {
   double _counter = 0;
   double _counter2 = 0;
   double resultado = 0;
+  bool cambioValor = false;
+  Operaciones operador = Operaciones.suma;
   Operaciones operacion1 = Operaciones.suma;
   TextStyle textStyle = const TextStyle(
     color: Colors.white,
     fontSize: 20,
   );
 
-  void _setOperaciones({required String operacion}) {
-    switch (operacion) {
-      case "+":
-        operacion1 = Operaciones.suma;
-        break;
-      case "-":
-        operacion1 = Operaciones.resta;
-        break;
-      case "*":
-        operacion1 = Operaciones.multiplicacion;
-        break;
-      case "/":
-        operacion1 = Operaciones.division;
-        break;
-    }
-  }
 
   void _setCounter({required int d}) {
     if (_counter != 0) {
       if (_counter2 == 0) {
         switch (d) {
           case 1:
-            _counter2 = 1;
+            variable2 = "$variable2$d";
             break;
           case 2:
-            _counter2 = 2;
+            variable2 = "$variable2$d";
             break;
           case 3:
-            _counter2 = 3;
+            variable2 = "$variable2$d";
             break;
           case 4:
-            _counter2 = 4;
+            variable2 = "$variable2$d";
             break;
           case 5:
-            _counter2 = 5;
+            variable2 = "$variable2$d";
             break;
           case 6:
-            _counter2 = 6;
+            variable2 = "$variable2$d";
             break;
           case 7:
-            _counter2 = 7;
+            variable2 = "$variable2$d";
             break;
           case 8:
-            _counter2 = 8;
+            variable2 = "$variable2$d";
             break;
           case 9:
-            _counter2 = 9;
+            variable2 = "$variable2$d";
             break;
         }
       }
     } else {
       switch (d) {
         case 1:
-          _counter = 1;
+          variable1 = "$variable1$d";
           break;
         case 2:
-          _counter = 2;
+          variable1 = "$variable1$d";
           break;
         case 3:
-          _counter = 3;
+          variable1 = "$variable1$d";
           break;
         case 4:
-          _counter = 4;
+          variable1 = "$variable1$d";_counter = 4;
           break;
         case 5:
-          _counter = 5;
+          variable1 = "$variable1$d";
           break;
         case 6:
-          _counter = 6;
+          variable1 = "$variable1$d";
           break;
         case 7:
-          _counter = 7;
+          variable1 = "$variable1$d";
           break;
         case 8:
-          _counter = 8;
+          variable1 = "$variable1$d";
           break;
         case 9:
-          _counter = 9;
+          variable1 = "$variable1$d";
           break;
       }
     }
-
     setState(() {});
   }
 
@@ -147,6 +133,26 @@ class _MyHomePageState extends State<MyHomePage> {
     setState(() {});
   }
 
+
+  void _cambiovalor(Operaciones operacion2) {
+    switch (operacion2) {
+      case Operaciones.suma:
+        cambioValor = !cambioValor;
+        break;
+      case Operaciones.resta:
+        cambioValor = !cambioValor;
+        break;
+      case Operaciones.multiplicacion:
+        cambioValor = !cambioValor;
+        break;
+      case Operaciones.division:
+        cambioValor = !cambioValor;
+        break;
+    }
+    operador = operacion2;
+    setState(() {});
+  }
+
   void _resetCounter() {
     setState(() {
       _counter = 0;
@@ -154,7 +160,9 @@ class _MyHomePageState extends State<MyHomePage> {
       resultado = 0;
     });
   }
-
+  
+  String variable1 = "";
+  String variable2 = "";
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -173,7 +181,7 @@ class _MyHomePageState extends State<MyHomePage> {
           children: [
             Padding(
               padding: const EdgeInsets.all(12.0),
-              child: PanelCustom(),
+              child: PanelCustom(valor1: variable1, valor2: variable2),
             ),
             SizedBox(
               width: double.infinity,
@@ -192,9 +200,9 @@ class _MyHomePageState extends State<MyHomePage> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  ButtomCustom(labelButtom: '7', onTap: () {  },),
-                  ButtomCustom(labelButtom: '8', onTap: () {  },),
-                  ButtomCustom(labelButtom: '9', onTap: () {  },),
+                  ButtomCustom(labelButtom: '7', onTap: () { _setCounter(d: 7); },),
+                  ButtomCustom(labelButtom: '8', onTap: () { _setCounter(d: 8); },),
+                  ButtomCustom(labelButtom: '9', onTap: () { _setCounter(d: 9);  },),
                   ButtomCustom(labelButtom: '/', onTap: () {  },),
                 ],
               ),
@@ -204,9 +212,9 @@ class _MyHomePageState extends State<MyHomePage> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  ButtomCustom(labelButtom: '4', onTap: () {  },),
-                  ButtomCustom(labelButtom: '5', onTap: () {  },),
-                  ButtomCustom(labelButtom: '6', onTap: () {  },),
+                  ButtomCustom(labelButtom: '4', onTap: () { _setCounter(d: 4);  },),
+                  ButtomCustom(labelButtom: '5', onTap: () { _setCounter(d: 5); },),
+                  ButtomCustom(labelButtom: '6', onTap: () { _setCounter(d: 6); },),
                   ButtomCustom(labelButtom: '*', onTap: () {  },),
                 ],
               ),
@@ -216,9 +224,9 @@ class _MyHomePageState extends State<MyHomePage> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  ButtomCustom(labelButtom: '1', onTap: () {  },),
-                  ButtomCustom(labelButtom: '2', onTap: () {  },),
-                  ButtomCustom(labelButtom: '3', onTap: () {  },),
+                  ButtomCustom(labelButtom: '1', onTap: () { _setCounter(d: 1); },),
+                  ButtomCustom(labelButtom: '2', onTap: () { _setCounter(d: 2); },),
+                  ButtomCustom(labelButtom: '3', onTap: () { _setCounter(d: 3); },),
                   ButtomCustom(labelButtom: '-', onTap: () {  },),
                 ],
               ),
@@ -247,11 +255,17 @@ class _MyHomePageState extends State<MyHomePage> {
 class PanelCustom extends StatelessWidget {
   const PanelCustom({
     super.key,
-    this.colorCustom = Colors.black,
+    required this.valor1,
+    required this.valor2,
+    this.operador = Operaciones.suma,
+    this.colorCustom = const Color.fromARGB(255, 162, 72, 72),
+
   });
 
   final Color colorCustom;
-
+  final String valor1;
+  final String valor2;
+  final Operaciones operador;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -259,6 +273,15 @@ class PanelCustom extends StatelessWidget {
       height: MediaQuery.of(context).size.height * 0.15, // responsive
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(15.0), color: colorCustom),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+            Text(valor1),
+            Text(operador == Operaciones.suma ? "+" : operador == Operaciones.resta ? "-" : operador == Operaciones.multiplicacion ? "*" : "/"),
+            Text(valor2)
+        ]
+        ),
     );
   }
 }
